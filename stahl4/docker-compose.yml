@@ -1,0 +1,24 @@
+---
+
+# This docker-compose file is solely for you to test your service. Feel free to change anything.
+# Use "docker-compose up -d" to install and run your service locally.
+# Only necessary adjustment: add your port. 
+
+version: "2"
+
+services:
+  service:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "21485:21485"  # service ports to expose (notation: "hostport:serviceport")
+    networks:
+      stahl_net:
+        ipv4_address: 10.32.1.2
+
+networks:
+  stahl_net:
+    ipam:
+      config:
+      - subnet: 10.32.0.0/16

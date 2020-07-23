@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+
+if [ "$1" = "enable" ]; then
+  echo systemctl not present in Docker, operation is mocked.
+  mkdir -p /etc/systemd/system/multi-user.target.wants/
+  if [ -f "/etc/systemd/system/$2.service" ]; then
+    ln -s "/etc/systemd/system/$2.service" "/etc/systemd/system/multi-user.target.wants/"
+  elif [ -f "/lib/systemd/system/$2.service" ]; then
+    ln -s "/lib/systemd/system/$2.service" "/etc/systemd/system/multi-user.target.wants/"
+  else
+    echo "Service $2.service not found!"
+    exit 1
+  fi
+elif [ "$1" = "disable" ]; then
+  echo systemctl not present in Docker, ignored.
+else
+  echo systemctl not present in Docker, error.
+  exit 1
+fi

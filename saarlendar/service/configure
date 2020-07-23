@@ -1,0 +1,21 @@
+#!/bin/sh
+
+cd ./src/nginx-1.17.4
+./configure --with-cc-opt="-Wextra -Wformat -Wformat-security -Wformat-y2k -fPIE -O0 -D_FORTIFY_SOURCE=0 -fstack-protector-all" --with-ld-opt="-pie -Wl,-z,relro -Wl,-z,now -Wl,--strip-all" --add-module=../
+cd ../..
+cat >Makefile <<EOF
+
+default:	build
+
+clean:
+	\$(MAKE) -C ./src/nginx-1.17.4 clean
+	\$(MAKE) -C ./src/duktape clean
+	rm ./Makefile
+	rm ./nginx
+
+build:
+	\$(MAKE) -C ./src/duktape
+	\$(MAKE) -C ./src/nginx-1.17.4
+	cp ./src/nginx-1.17.4/objs/nginx ./nginx
+
+EOF

@@ -1,0 +1,71 @@
+buildscript {
+    ext.kotlin_version = '1.3.40'
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin-platform-js'
+
+sourceSets {
+    main.kotlin.srcDirs = [ 'src' ]
+    main.resources.srcDirs = [ 'resources' ]
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-html-js:0.6.11"
+    // expectedBy project(":fullstack-mpp-common")
+}
+
+task website(dependsOn: ['compileKotlin2Js']) {
+    doLast {
+    }
+}
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "${projectDir}/web/frontend.js"
+    kotlinOptions.moduleKind = "umd"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.sourceMapEmbedSources = "always"
+}
+
+compileTestKotlin2Js {
+    kotlinOptions.moduleKind = "umd"
+    kotlinOptions.sourceMap = true
+}
+
+clean {
+    delete new File("${projectDir}/web")
+}
+
+compileKotlin2Js.doLast {
+    configurations.compile.each { File file ->
+        copy {
+            includeEmptyDirs = false
+
+            from zipTree(file.absolutePath)
+            //println(file.absolutePath)
+            into "${projectDir}/web"
+            include { fileTreeElement ->
+                def path = fileTreeElement.path
+                (path.endsWith(".js") || path.endsWith(".js.map")) && (path.startsWith("META-INF/resources/") || !path.startsWith("META-INF/"))
+            }
+        }
+    }
+
+    copy {
+        from sourceSets.main.resources.srcDirs
+        into "${projectDir}/web"
+    }
+}

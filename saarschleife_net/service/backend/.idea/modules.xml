@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2099739760/kotlin-concurrency-frontend.iml" filepath="$PROJECT_DIR$/.idea/modules/-2099739760/kotlin-concurrency-frontend.iml" group="kotlin-concurrency-server/kotlin-concurrency-frontend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2099739760/kotlin-concurrency-frontend_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-2099739760/kotlin-concurrency-frontend_main.iml" group="kotlin-concurrency-server/kotlin-concurrency-frontend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2099739760/kotlin-concurrency-frontend_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-2099739760/kotlin-concurrency-frontend_test.iml" group="kotlin-concurrency-server/kotlin-concurrency-frontend" />
+      <module fileurl="file://$PROJECT_DIR$/kotlin-concurrency-server.iml" filepath="$PROJECT_DIR$/kotlin-concurrency-server.iml" group="kotlin-concurrency-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-concurrency-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-concurrency-server_main.iml" group="kotlin-concurrency-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-concurrency-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-concurrency-server_test.iml" group="kotlin-concurrency-server" />
+    </modules>
+  </component>
+</project>

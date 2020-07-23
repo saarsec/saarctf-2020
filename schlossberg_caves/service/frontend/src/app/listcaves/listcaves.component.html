@@ -1,0 +1,14 @@
+<h1>Visit a Cave</h1>
+<p class="lead">
+	We have many big caves here!<br/>
+	Some of them are rented, but you can still visit them...
+</p>
+
+<ul>
+	<li *ngFor="let cave of caves">
+		<a class="href" routerLink="/cave/{{cave.id}}">
+			#{{cave.id}} - {{cave.name}}
+			<small>(by {{cave.owner}})</small>
+		</a>
+	</li>
+</ul>

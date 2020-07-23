@@ -1,0 +1,32 @@
+@model IList<saarXiv.Models.Paper>
+
+<dl class="row">
+    @foreach (var item in Model)
+    {
+        <dt class="col-sm-2 text-monospace">
+            <a asp-page="./Paper/Download" asp-route-id="@item.ID">
+                @Html.DisplayFor(modelItem => item.SaarXivID)<br/>
+                <small>
+                    @{
+                        if (item.UnderSubmission)
+                        {
+                            <span class="badge badge-warning">Under Submissions</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-success">Published</span>
+                        }
+                    }
+                </small>
+            </a>
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-page="./Paper/Download" asp-route-id="@item.ID">
+                <h5>@Html.DisplayFor(modelItem => item.Title)</h5>
+                <div class="text-muted">
+                    @Html.DisplayFor(modelItem => item.Author.Initial).&nbsp;@Html.DisplayFor(modelItem => item.Author.Lastname)
+                </div>
+            </a>
+        </dd>
+    }
+</dl>

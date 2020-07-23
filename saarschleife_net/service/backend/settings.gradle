@@ -1,0 +1,3 @@
+
+include("saarschleife-frontend")
+project(":saarschleife-frontend").projectDir = file("../frontend")

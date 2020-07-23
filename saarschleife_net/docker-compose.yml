@@ -1,0 +1,15 @@
+---
+
+# This docker-compose file is solely for you to test your service. Feel free to change anything.
+# Use "docker-compose up -d" to install and run your service locally.
+# Only necessary adjustment: add your port. 
+
+version: "2"
+
+services:
+  service:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

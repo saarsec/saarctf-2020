@@ -1,0 +1,40 @@
+.cavecontainer {
+	position: relative;
+	user-select: none;
+}
+
+@marker-height: 40px;
+@marker-width: 40px;
+
+.marker {
+	position: absolute;
+
+	width: @marker-width;
+	height: @marker-height;
+	margin: -@marker-height/2 0 0 -@marker-width/2;
+
+	border: 5px solid white;
+	border-radius: @marker-height/2;
+	color: white;
+	font-weight: bold;
+
+	&:after {
+		content: "X";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		font-size: @marker-height;
+		text-align: center;
+		line-height: 100%;
+		overflow: hidden;
+		user-select: none;
+		margin-top: -2px;
+	}
+}
+
+.marker-treasure {
+	color: #a7eeff;
+	border-color: #a7eeff;
+}

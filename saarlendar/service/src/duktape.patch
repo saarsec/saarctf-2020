@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 2c67896d..7c46f949 100644
+--- a/Makefile
++++ b/Makefile
+@@ -148,7 +148,7 @@ CCOPTS_SHARED += -I./extras/module-duktape
+ #CCOPTS_SHARED += -fstack-usage  # enable manually, then e.g. $ make clean duk; python util/pretty_stack_usage.py duktape.su
+ 
+ CCOPTS_NONDEBUG = $(CCOPTS_SHARED) $(CCOPTS_FEATURES)
+-CCOPTS_NONDEBUG += -Os -fomit-frame-pointer -fno-stack-protector
++CCOPTS_NONDEBUG += -O0 -D_FORTIFY_SOURCE=1 -fomit-frame-pointer -fno-stack-protector
+ CCOPTS_NONDEBUG += -g -ggdb
+ #CCOPTS_NONDEBUG += -malign-double
+ 
+@@ -163,7 +163,7 @@ CLANG_CCOPTS_NONDEBUG += -Wcomma
+ 
+ GXXOPTS_SHARED = -pedantic -ansi -std=c++11 -fstrict-aliasing -Wall -Wextra -Wunused-result -Wunused-function
+ GXXOPTS_SHARED += -DDUK_CMDLINE_PRINTALERT_SUPPORT
+-GXXOPTS_NONDEBUG = $(GXXOPTS_SHARED) -Os -fomit-frame-pointer
++GXXOPTS_NONDEBUG = $(GXXOPTS_SHARED) -D_FORTIFY_SOURCE=1 -O0 -fomit-frame-pointer
+ GXXOPTS_NONDEBUG += -I./examples/alloc-logging -I./examples/alloc-torture -I./examples/alloc-hybrid -I./extras/print-alert -I./extras/console -I./extras/logging -I./extras/module-duktape
+ GXXOPTS_DEBUG = $(GXXOPTS_SHARED) -O0 -g -ggdb
+ GXXOPTS_DEBUG += -I./examples/alloc-logging -I./examples/alloc-torture -I./examples/alloc-hybrid -I./extras/print-alert -I./extras/console -I./extras/logging -I./extras/module-duktape

@@ -1,0 +1,17 @@
+<div class="cavecontainer" #cavecontainer>
+	<canvas #cavecanvas>
+	</canvas>
+	<div class="marker"
+		 [style.left.px]="_cave.coordToCanvas(_cave.startpoint.col)"
+		 [style.top.px]="_cave.coordToCanvas(_cave.startpoint.row)"
+		 title="Start point"
+		 *ngIf="_cave !== null">
+	</div>
+
+	<div class="marker marker-treasure" *ngFor="let treasure of treasures; let i = index"
+		 [style.left.px]="_cave.coordToCanvas(treasure.x)"
+		 [style.top.px]="_cave.coordToCanvas(treasure.y)"
+		 [title]="'Treasure('+treasure.name+')'"
+		 >
+	</div>
+</div>

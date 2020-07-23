@@ -1,0 +1,33 @@
+<h2>Rent a Cave</h2>
+
+<p class="lead">
+	We have many big caves! First select one to rent ...
+</p>
+
+<ng-template #templateCavePreview>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">
+			Cave Preview
+			<span *ngIf="currentCave">({{currentCaveTemplate.name}}, {{currentCaveTemplate.width}}&times;{{currentCaveTemplate.height}})</span>
+		</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="cavePreviewRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<drag-scroll style="max-height: 70vh; cursor: move">
+			<app-cave-display [cave]="currentCave"></app-cave-display>
+		</drag-scroll>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" (click)="cavePreviewRef.hide()">Close</button>
+		<button class="btn btn-primary" (click)="rentCave(currentCaveTemplate)">Rent!</button>
+	</div>
+</ng-template>
+
+
+<ul>
+	<li *ngFor="let template of templates">
+		<a class="href" (click)="previewCave(template)">#{{ template.id }} - {{template.name}}</a>
+	</li>
+</ul>

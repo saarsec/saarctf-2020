@@ -1,0 +1,19 @@
+<form class="navbar-form navbar-right" *ngIf="!backend.username">
+	<div class="form-group">
+		<input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="username">
+		<input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password">
+	</div>
+	<button class="btn btn-default" (click)="login(username, password)">Login</button>
+	<button class="btn btn-default" (click)="register(username, password)">Register</button>
+</form>
+
+<ul class="nav navbar-nav navbar-right" *ngIf="backend.username">
+	<li>
+		<a class="href" (click)="logout()">Logout</a>
+	</li>
+</ul>
+<div class="nav navbar-nav navbar-right" *ngIf="backend.username">
+	<p class="navbar-text">
+		Welcome, {{backend.username}}
+	</p>
+</div>

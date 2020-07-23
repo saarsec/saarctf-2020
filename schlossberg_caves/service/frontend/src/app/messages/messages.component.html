@@ -1,0 +1,8 @@
+<div *ngIf="messageService.messages.length">
+	<alert *ngFor="let message of messageService.messages"
+		   type="{{message.type}}"
+		   [dismissible]="true"
+		   [dismissOnTimeout]="message.timeout">
+		{{message.text}}
+	</alert>
+</div>

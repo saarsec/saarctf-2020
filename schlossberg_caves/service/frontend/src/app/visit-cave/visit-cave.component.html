@@ -1,0 +1,38 @@
+<div *ngIf="cave">
+	<h1>Cave #{{cave.id}} &ndash; {{cave.name}}</h1>
+
+	<p class="lead">
+		Rented by {{cave.owner}}.
+	</p>
+
+	<p *ngIf="parsedCave">
+		Entry: ({{parsedCave.startpoint.col}}, {{parsedCave.startpoint.row}})<br/>
+		Hidden Treasures: {{cave.treasure_count}}
+	</p>
+
+	<p>
+		Please describe your guide what you want to see:
+	</p>
+
+	<tabset #filetabs>
+		<tab *ngFor="let filename of files" heading="{{filename}}" [removable]="true"
+			 (removed)="removeFile(filename)">
+			<div class="form-group">
+				<codemirror [(ngModel)]="codefiles[filename]" [config]="codeConfig"></codemirror>
+			</div>
+		</tab>
+		<tab (selectTab)="addFile()" heading="+" customClass="addFileTab"></tab>
+	</tabset>
+	<div class="form-group text-right">
+		<button class="btn btn-primary" (click)="runCode()">Execute!</button>
+	</div>
+
+
+	<br />
+	<br />
+	<pre class="compilerOutput" *ngIf="output">{{output}}</pre>
+
+	<drag-scroll *ngIf="parsedCave && visitedPath.path.length" style="max-width: 100%; cursor: move" class="thumbnail">
+		<app-cave-display [cave]="parsedCave" [path]="visitedPath.path"></app-cave-display>
+	</drag-scroll>
+</div>

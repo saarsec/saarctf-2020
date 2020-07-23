@@ -1,0 +1,13 @@
+﻿@page
+@model saarXiv.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Welcome to the saarXiv Publication Archive";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr/>
+<p>Your on-stop shop for all your scientific publications. Deposit your papers, edit pre-prints, and even share your work with colleagues while it's still under submission!</p>
+<h4>Latest Publications</h4>
+<hr/>
+<partial name="Shared/_PaperList" model="Model.Papers"/>

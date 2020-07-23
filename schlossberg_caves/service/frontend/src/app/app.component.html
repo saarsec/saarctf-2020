@@ -1,0 +1,40 @@
+<header>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+						data-target="#mainmenu-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" [routerLink]="['']">Schlossberg Caves</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="mainmenu-collapse-1">
+				<ul class="nav navbar-nav">
+					<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+						<a [routerLink]="['caves']">Visit Caves</a>
+					</li>
+
+					<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+						<a [routerLink]="['rent-a-cave']">Rent a Cave!</a>
+					</li>
+				</ul>
+
+				<app-user></app-user>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<main class="container">
+	<app-messages></app-messages>
+	<router-outlet></router-outlet>
+</main>
+
+<footer class="container">
+	<small>Proudly developed by saarsec</small>
+</footer>

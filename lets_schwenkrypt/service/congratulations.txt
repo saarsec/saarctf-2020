@@ -1,0 +1,17 @@
+Congratulations to your purchase of our schwenking party planning server!
+You are now the proud owner of the best available schwenking party planning tool in existence.
+Never again will you have to worry about your guests not bringing what they committed to bring!
+They can simply use their clients to store their culinary commitments on your server.
+When the party starts, you can easily check whether they brought what they promised to bring.
+Our patented advice: If somebody tries to cheat, make them fetch additional booze for the party!
+
+In order to comply with the recent data non-protection rules (DNPR) which some of the politicians try to introduce,
+we opted to store commitments in an encrypted form, instead of using one-way functions.
+Then we are able to hand over the keys to law enforcement agencies in case of serious criminal offenses.
+If, for example, somebody brings spoiled meat or too few beers to the party, we can bring the offender to justice!
+
+Please note, that the client is currently unavailable.
+We have strong reason to believe, that the former supplier of the client - the Crypto AG - has compromised the integrity of the cryptographic parameter generation.
+We are currently collaborating with renowned researchers from CISPA in order to develop a new client - one which adheres to our high saarländisch quality standards.
+There are still some customers who use the old client.
+If you notice that somebody tries to store weakly encrypted commitments, feel free upgrade them to higher standards.

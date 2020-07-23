@@ -1,0 +1,28 @@
+﻿@page
+@model saarXiv.Pages.AllModel
+
+@{
+    ViewData["Title"] = "All Publications";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr/>
+<partial name="Shared/_PaperList" model="Model.Papers"/>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="All"
+   asp-route-p="@(Model.PageIndex - 1)"
+   asp-route-q="@(Model.PageSize)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="All"
+   asp-route-p="@(Model.PageIndex + 1)"
+   asp-route-q="@(Model.PageSize)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

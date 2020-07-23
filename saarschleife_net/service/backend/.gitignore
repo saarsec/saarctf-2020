@@ -1,0 +1,8 @@
+/gradlew
+/gradlew.bat
+/.gradle/
+/gradle/
+/out/
+.idea/libraries/
+/build/
+/node_modules/

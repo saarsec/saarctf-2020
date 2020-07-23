@@ -1,0 +1,28 @@
+@page
+@model saarXiv.Pages.Paper.ShareModel
+
+@{
+    ViewData["Title"] = "Share";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr/>
+<partial name="_StatusMessage" for="StatusMessage"/>
+
+<p>
+    This token may be used to download your paper:
+</p>
+<div class="row">
+    <div class="col-md-12">
+        <form >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <textarea asp-for="DownloadToken" class="form-control text-monospace" readonly rows="8"></textarea>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

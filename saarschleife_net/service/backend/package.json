@@ -1,0 +1,12 @@
+{
+  "name": "saarschleife.net",
+  "version": "1.0.0",
+  "description": "Saarschleife Social Network Server",
+  "author": "[saarsec] mkb",
+  "private": true,
+  "dependencies": {
+    "materialize-css": "^1.0.0"
+  },
+  "devDependencies": {
+  }
+}

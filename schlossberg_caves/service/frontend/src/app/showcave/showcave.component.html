@@ -1,0 +1,60 @@
+<div *ngIf="cave">
+	<h1>Cave #{{cave.id}} &ndash; {{cave.name}}</h1>
+
+	<p class="lead">
+		Rented by {{cave.owner}}.
+	</p>
+
+	<p *ngIf="parsedCave">
+		Entry: ({{parsedCave.startpoint.col}}, {{parsedCave.startpoint.row}})<br/>
+		Hidden Treasures: {{cave.treasure_count}}
+	</p>
+
+	<ul *ngIf="cave.treasures">
+		<li *ngFor="let treasure of cave.treasures; let i = index">
+			{{treasure.name}} @ <a class="href" (click)="cavedisplay.focus(i)">({{treasure.x}}, {{treasure.y}})</a>
+		</li>
+	</ul>
+
+	<p>
+		<a class="href btn btn-primary" *ngIf="cave.owner == backend.username" (click)="showHideTreasureModal()">Hide a Treasure</a>
+		<a class="href btn btn-primary" routerLink="/cave/{{cave.id}}/visit">Visit Cave...</a>
+	</p>
+
+	<drag-scroll *ngIf="parsedCave" style="overflow-x: scroll; max-width: 100%" class="thumbnail">
+		<app-cave-display [cave]="parsedCave" [treasures]="cave.treasures" #cavedisplay></app-cave-display>
+	</drag-scroll>
+</div>
+
+<p *ngIf="!cave" class="text-muted">
+	Loading...
+</p>
+
+
+<ng-template #templateHideTreasure>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">
+			Hide a Treasure
+			<small>in {{cave.name}}</small>
+		</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="hideTreasureRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form #formHideTreasure="ngForm" (ngSubmit)="hideTreasure(formHideTreasure) && hideTreasureRef.hide()">
+			<div class="form-group">
+				<label for="treasureName">Treasure Name</label>
+				<input type="text" class="form-control" id="treasureName" placeholder="Name..." name="treasureName"
+					   [(ngModel)]="treasureName" required>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" (click)="hideTreasureRef.hide()">Close</button>
+		<button class="btn btn-primary" [disabled]="!formHideTreasure.valid"
+				(click)="hideTreasure(formHideTreasure) && hideTreasureRef.hide()">Hide!
+		</button>
+	</div>
+</ng-template>
+
